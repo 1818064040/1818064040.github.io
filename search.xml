@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Redis学习</title>
+      <link href="/2021/10/23/redis-xue-xi/"/>
+      <url>/2021/10/23/redis-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Redis学习"><a href="#Redis学习" class="headerlink" title="Redis学习"></a>Redis学习</h1>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>article title</title>
+      <link href="/2021/10/23/article-title/"/>
+      <url>/2021/10/23/article-title/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2021/10/23/git-shi-yong/"/>
+      <url>/2021/10/23/git-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<p><code>title: Redis学习</code><br><code>date: 2021-10-23 20:14:03</code><br><code>tags:</code></p><h1 id="Github使用"><a href="#Github使用" class="headerlink" title="Github使用"></a>Github使用</h1><h2 id="github文件区域"><a href="#github文件区域" class="headerlink" title="github文件区域"></a>github文件区域</h2><pre class="line-numbers language-none"><code class="language-none">1.工作区 workspace未跟踪与未暂存文件处于本区2.暂存区 index提交到仓库之前的缓存区3.仓库* 本地仓库* 远程仓库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="GitHub文件状态"><a href="#GitHub文件状态" class="headerlink" title="GitHub文件状态"></a>GitHub文件状态</h2><pre><code>1.未跟踪 untracked    新创建一个文件，处于未跟踪状态，文件位于工作区。2.未暂存 unstaged    修改一个文件，处于未暂存状态，文件位于工作区。3.已暂存     为暂存与为跟踪文件初步提交变为已暂存4.已提交5.不需管理    创建 .gitingore文件，在其中说明不需管理的文件</code></pre><h2 id="GitHub常用命令"><a href="#GitHub常用命令" class="headerlink" title="GitHub常用命令"></a>GitHub常用命令</h2><pre><code>1. git init 初始化git仓库(*)2. git add 工作区文件提交到暂存区  状态：工作区 -&gt; 暂存区    add . :添加所有文件到暂存区    add 文件名 :提交单个文件(*)3. git commit  提交到仓库  暂存区 -&gt; 本地仓库    git commit -m "'说明/标记'"4. git status 查看状态(*)5. git log     打印提交记录(日志)    log --all 显示所有分支    log --pretty=oneline  将提交信息显示为一行    log --abbrey-commit 使得输出的commit更简短    log --graph 以图的方式显示(*)6.git reset --hard commitID(提交记录)  版本回退 还原以前版本7.git reflog 查看删除记录（回滚之后可以看到已经删除的提交记录，包含commit记录）</code></pre><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre class="line-numbers language-none"><code class="language-none">为了进行协同开发时，各个用户开发之间互不影响。工作区只能为一个分支进行服务每个分区(*)- git branch   查看本地分支-git branch vv 详细信息(*)- git branch  name(分支名称)  创建新分支  (*)- git checkout name   切换分支(*)- git checkout -b name  切换并创建分支(*)- git merge name  合并提交分支，一个分支上的提交可以合并到另一个分支(*)- git branch -d name 删除分支，删除时做各种检查，只能删除其他分支，不能删除当前分支。、- git branch -D name 强制删除，不做检查<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="git远程仓库托管"><a href="#git远程仓库托管" class="headerlink" title="git远程仓库托管"></a>git远程仓库托管</h2><pre class="line-numbers language-none"><code class="language-none">- git config --global user.name username 用户名- git config --global user.email email 邮箱- ssh -keygen -t rsa 请求ssh密钥获取密钥后复制公钥到github,- cat ~/.ssh/id_rsa.pub 获取密钥- ssh -T git@github.com 验证是否连接成功<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> <pre class="line-numbers language-none"><code class="language-none">- git remote add name(名称）"url(ssh)" 绑定远程仓库- git remote 查看远程仓库- git push [-f]  [--set--upstream] [远端名称[本地分支名][远端分支名]]- git push name（仓库名） name(分支名称) 推送本地分支到远程仓库-git push --set --upstream name（仓库名） name(分支名称) 推送本地分支到远程仓库并建立和远端分支的关联关系-f 强制执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h4><pre class="line-numbers language-none"><code class="language-none">- git clone <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>远程仓库地址 [目录] 将远程仓库克隆到本地</strong></p><h4 id="抓取"><a href="#抓取" class="headerlink" title="抓取"></a>抓取</h4><pre class="line-numbers language-none"><code class="language-none">- git fetch [remote name](远程) [branch name](分支)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>​    <strong>将仓库中的更新都拉取到本地，但不会进行合并</strong></p><h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><pre class="line-numbers language-none"><code class="language-none">- git merge (remote_name)/(branch_name)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>合并本地分支和远程分支</strong></p><h4 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h4><pre class="line-numbers language-none"><code class="language-none">- git pull [remote name] [branch name]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>将仓库中的修改都拉到本地并进行合并，等于  fetch + merge</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2021/10/22/hello-world/"/>
+      <url>/2021/10/22/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
