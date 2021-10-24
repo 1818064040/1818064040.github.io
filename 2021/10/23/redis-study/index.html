@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Redis数据库, Blog">
+    <meta name="keywords" content="Redis-study, Blog">
     <meta name="description" content="开始Redis的学习啦">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Redis数据库 | Blog</title>
+    <title>Redis-study | Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -419,12 +419,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Redis数据库</h1>
+                    <h1 class="description center-align post-title">Redis-study</h1>
                 </div>
             </div>
         </div>
@@ -630,7 +630,7 @@
 <li>有序集合类型   sorted_set</li>
 </ul>
 </li>
-<li>持久化支持，可以进行数据灾难恢复</li>
+<li> 持久化支持，可以进行数据灾难恢复</li>
 </ol>
 <p>应用：</p>
 <ul>
@@ -657,7 +657,7 @@
 <li>Redis本身是一个Map，其中的数据类型都是key-value 的形式存储</li>
 <li>数据类型指的是存储的数据的类型，也是value部分的类型</li>
 </ul>
-<p><img src="/.io//image-20211024095746173.png" alt="image-20211024095746173"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024095746173.png" alt="image-20211024095746173"></p>
 <h5 id="2-1-String类型"><a href="#2-1-String类型" class="headerlink" title="2.1 String类型"></a>2.1 String类型</h5><ul>
 <li>存储的数据：单个数据，最简单的数据存储类型，也是最常用的数据类型。</li>
 <li>存储数据的格式：一个存储空间保存一个数据</li>
@@ -671,7 +671,7 @@
 <li><p>删除数据</p>
 <pre class="line-numbers language-none"><code class="language-none">del key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p><img src="/.io//image-20211024100337922.png" alt="image-20211024100337922"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024100337922.png" alt="image-20211024100337922"></p>
 <ul>
 <li><p>添加/修改多个数据</p>
 <pre class="line-numbers language-none"><code class="language-none">mset key1 value1 key2 value2 ...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
@@ -682,9 +682,9 @@
 <li><p>追加信息到原始信息后部(如果原始信息在就追加,没有就新建)</p>
 <pre class="line-numbers language-none"><code class="language-none">apppend key vaklue <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p><img src="/.io//image-20211024100903392.png" alt="image-20211024100903392"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024100903392.png" alt="image-20211024100903392"></p>
 <p><strong>单指令，多指令数据操作选择</strong></p>
-<p><img src="/.io//image-20211024101533114.png" alt="image-20211024101533114"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024101533114.png" alt="image-20211024101533114"></p>
 <h6 id="String-类型数据的扩展操作"><a href="#String-类型数据的扩展操作" class="headerlink" title="String  类型数据的扩展操作"></a><strong>String  类型数据的扩展操作</strong></h6><p>数据需为整数型/浮点型进行操作</p>
 <ul>
 <li><p>设置数值数据增加指定范围的值</p>
@@ -695,10 +695,8 @@ incrbyfloat key increament<span aria-hidden="true" class="line-numbers-rows"><sp
 <pre class="line-numbers language-none"><code class="language-none">decr key 
 decrby key increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/.io//image-20211024102414465.png" alt="image-20211024102414465"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024102414465.png" alt="image-20211024102414465"></p>
 </li>
-</ul>
-<ul>
 <li><p>设置数据具有指定的生命周期</p>
 <pre class="line-numbers language-none"><code class="language-none">setex ley seconds value 
 psetex key milliseconds value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -706,13 +704,13 @@ psetex key milliseconds value<span aria-hidden="true" class="line-numbers-rows">
 <p>秒/毫秒，赋予数据生命周期，时间到即失效，适用于具有生命周期的项目</p>
 </li>
 </ul>
-<p><img src="/.io//image-20211024103422749.png" alt="image-20211024103422749"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024103422749.png" alt="image-20211024103422749"></p>
 <p><strong>String类型数据操作的注意事项</strong></p>
-<p><img src="/.io//image-20211024103655991.png" alt="image-20211024103655991"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024103655991.png" alt="image-20211024103655991"></p>
 <p><strong>key的设置约定</strong></p>
-<p><img src="/.io//image-20211024104202645.png" alt="image-20211024104202645"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024104202645.png" alt="image-20211024104202645"></p>
 <h5 id="2-2-hash类型"><a href="#2-2-hash类型" class="headerlink" title="2.2 hash类型"></a>2.2 hash类型</h5><p><strong>存储的困惑</strong></p>
-<p><img src="/.io//image-20211024104437831.png" alt="image-20211024104437831"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024104437831.png" alt="image-20211024104437831"></p>
 <ul>
 <li>存储形式： key-value(field1value1 field2 value2 )，一个储存空间保存多个键值对3</li>
 <li>hash类型： 底层使用hash表实现数据存储<br>如果field数量较少，存储结构优化为类数组结构<br>如果filed数量较多，存储结构使用HashMap结构</li>
@@ -726,7 +724,7 @@ hgetall key<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><p>删除数据</p>
 <pre class="line-numbers language-none"><code class="language-none">hdel key field1 [field2]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/.io//image-20211024105357611.png" alt="image-20211024105357611"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024105357611.png" alt="image-20211024105357611"></p>
 </li>
 <li><p>添加/修改多个数据</p>
 <pre class="line-numbers language-none"><code class="language-none">hmset key field1 value1 field2 value2 ...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
@@ -735,9 +733,11 @@ hgetall key<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><p>获取哈希表中字段的数量</p>
 <pre class="line-numbers language-none"><code class="language-none">hlen key <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>获取哈希表中是否存在指定的字段</p>
-<pre class="line-numbers language-none"><code class="language-none">hexists key field<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-none"><code class="language-none">hexists key field<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024105854308.png" alt="image-20211024105854308"></p>
+</li>
 </ul>
-<p><img src="/.io//image-20211024105854308.png" alt="image-20211024105854308"></p>
 <h6 id="hash类型数据库扩展操作"><a href="#hash类型数据库扩展操作" class="headerlink" title="hash类型数据库扩展操作"></a>hash类型数据库扩展操作</h6><ul>
 <li><p>获取哈希表中所有的字段名或字段值</p>
 <pre class="line-numbers language-none"><code class="language-none">hkeys key 
@@ -746,13 +746,13 @@ hvals key<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <pre class="line-numbers language-none"><code class="language-none">hincrby key field increment
 hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/.io//image-20211024110251097.png" alt="image-20211024110251097"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024110251097.png" alt="image-20211024110251097"></p>
 </li>
 <li><p>保存field前判断，有则不变，无则添加</p>
 <pre class="line-numbers language-none"><code class="language-none">hsetnx key field v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><strong>注意事项</strong></p>
-<p><img src="/.io//image-20211024110442137.png" alt="image-20211024110442137"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024110442137.png" alt="image-20211024110442137"></p>
 
                 
             </div>
@@ -779,7 +779,7 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://1818064040.github.io/2021/10/23/redis-xue-xi/">http://1818064040.github.io/2021/10/23/redis-xue-xi/</a>
+                    <a href="http://1818064040.github.io/2021/10/23/redis-study/">http://1818064040.github.io/2021/10/23/redis-study/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1043,13 +1043,13 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
                 本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/23/redis-xue-xi/">
+                <a href="/2021/10/23/redis-study/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Redis数据库">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Redis-study">
                         
-                        <span class="card-title">Redis数据库</span>
+                        <span class="card-title">Redis-study</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
