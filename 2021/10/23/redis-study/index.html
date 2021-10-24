@@ -540,12 +540,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/redis/">
-                                <span class="chip bg-color">redis</span>
-                            </a>
-                        
                             <a href="/tags/nosql/">
                                 <span class="chip bg-color">nosql</span>
+                            </a>
+                        
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
                             </a>
                         
                     </div>
@@ -569,7 +569,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    2.1k
                 </div>
                 
 
@@ -646,7 +646,7 @@
 <li><p>功能性命令<br>set  key value         存储数据</p>
 <p>get key                     获取数据</p>
 </li>
-<li><p>清除屏幕信息<br>clean                         清除屏幕信息</p>
+<li><p>清除屏幕信息<br>clear                         清除屏幕信息</p>
 </li>
 <li><p>帮助信息查询<br>help  get                   获取get帮助信息<br>help<br>help  set</p>
 </li>
@@ -746,14 +746,207 @@ hvals key<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <pre class="line-numbers language-none"><code class="language-none">hincrby key field increment
 hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2021/10/23/redis-study/image-20211024110251097.png" alt="image-20211024110251097"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024110251097.png" alt="hash"></p>
 </li>
 <li><p>保存field前判断，有则不变，无则添加</p>
 <pre class="line-numbers language-none"><code class="language-none">hsetnx key field v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><strong>注意事项</strong></p>
-<p><img src="/2021/10/23/redis-study/image-20211024110442137.png" alt="image-20211024110442137"></p>
+<p><img src="/2021/10/23/redis-study/image-20211024110442137.png" alt="注意事项"></p>
+<h5 id="2-3-List类型"><a href="#2-3-List类型" class="headerlink" title="2.3 List类型"></a>2.3 List类型</h5><ul>
+<li>数据储存需求： 存储多个数据，并对数据进入存储空间的顺序进行区分</li>
+<li>需要的存储结构：一个存储空间保存多个数据，且通过数据可以体现进入数据</li>
+<li>list类型： 保存多个数据，底层使用双向链表存储结构实现</li>
+</ul>
+<p><img src="/2021/10/23/redis-study/image-20211024143949025.png" alt="双向链表"></p>
+<h6 id="list数据类型基本操作"><a href="#list数据类型基本操作" class="headerlink" title="list数据类型基本操作"></a>list数据类型基本操作</h6><h6 id=""><a href="#" class="headerlink" title=""></a></h6><ul>
+<li><p>添加/修改数据</p>
+<pre class="line-numbers language-none"><code class="language-none">lpush key value1 [value2] ...
+rpush key value1 [value2] ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>获取数据</p>
+<pre class="line-numbers language-none"><code class="language-none">lrange key strat stop
+lindex key index
+llen key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>获取并移除数据</p>
+<pre class="line-numbers language-none"><code class="language-none">lpop key
+rpop key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p><img src="/2021/10/23/redis-study/image-20211024145009483.png" alt="list基本操作"></p>
+</li>
+</ul>
+<h6 id="list数据类型扩展操作"><a href="#list数据类型扩展操作" class="headerlink" title="list数据类型扩展操作"></a>list数据类型扩展操作</h6><ul>
+<li><p>规定时间内获取并移除数据（阻塞式数据获取）</p>
+<pre class="line-numbers language-none"><code class="language-none">blpop key1 [key2] timeout(时间)
+brpop key1 [key2] timeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>在等待时间内获取指定list（可以多个）中数据    并移除数据<br>等待时间结束有数据就取出来，没有为nil</p>
+</li>
+<li><p>移除指定数据 </p>
+<pre class="line-numbers language-none"><code class="language-none">lrem key count value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>redis 应用于具有操作先后顺序的数据控制</li>
+</ul>
+<p><img src="/2021/10/23/redis-study/image-20211024150705698.png" alt="移除指定数据"></p>
+</li>
+</ul>
+<p>list<strong>类型数据操作注意事项</strong></p>
+<p><img src="/2021/10/23/redis-study/image-20211024151239326.png" alt="list类型数据操作注意事项"></p>
+<h5 id="2-4-set类型"><a href="#2-4-set类型" class="headerlink" title="2.4 set类型"></a>2.4 set类型</h5><ul>
+<li>新的存储需求：存储大量的数据，在查询方面提供更高的效率</li>
+<li>需要的内存结构： 能够保存大量的数据，高效的内部存储机制，便于查询</li>
+<li>set类型：与hash存储结构完全相同，仅存储键，不存储值（nil)，并且值是不允许重复的</li>
+</ul>
+<p><img src="/2021/10/23/redis-study/image-20211024152502163.png" alt="set结构"></p>
+<ul>
+<li>解：将原本的value存储到hash结构的key上.</li>
+</ul>
+<h6 id="set数据类型基本操作"><a href="#set数据类型基本操作" class="headerlink" title="set数据类型基本操作"></a>set数据类型基本操作</h6><h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><ul>
+<li><p>添加数据</p>
+<pre class="line-numbers language-none"><code class="language-none">sadd key member1 [member2]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>获取全部数据</p>
+<pre class="line-numbers language-none"><code class="language-none">smembers key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>删除</p>
+<pre class="line-numbers language-none"><code class="language-none">srem key member1 [member2]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024153004958.png" alt="set基本操作"></p>
+</li>
+<li><p>获取集合数据总量</p>
+<pre class="line-numbers language-none"><code class="language-none">scard key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>判断集合中是否包含指定数据</p>
+<pre class="line-numbers language-none"><code class="language-none">sismember key member<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024153451228.png" alt="set基本操作2"></p>
+</li>
+</ul>
+<h6 id="set数据类型扩展操作"><a href="#set数据类型扩展操作" class="headerlink" title="set数据类型扩展操作"></a>set数据类型扩展操作</h6><ul>
+<li><p>随机获取集合中指定数量的数据</p>
+<pre class="line-numbers language-none"><code class="language-none">srandmember key [count]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>随机获取集合中某个数据并移出集合</p>
+<pre class="line-numbers language-none"><code class="language-none">spop key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024154110814.png" alt="set扩展操作"></p>
+</li>
+<li><p>求两个集合的交，并，差集</p>
+<pre class="line-numbers language-none"><code class="language-none">sinter key1 key2
+sunion key1 key2
+sdiff key1 key2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024154800261.png" alt="set扩展操作"></p>
+</li>
+<li><p>求两个集合的交，并，差集并存储到指定集合中</p>
+<pre class="line-numbers language-none"><code class="language-none">sinterstore destination key1 key2
+sunionstore destination key1 key2
+sdiffstore destination key1 key2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<p><img src="/2021/10/23/redis-study/image-20211024155031844.png" alt="扩展操作3"></p>
+<ul>
+<li><p>将指定数据从原始集合中移动到目标集合中</p>
+<pre class="line-numbers language-none"><code class="language-none">smove source destination member<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024155517114.png" alt="set扩展操作"></p>
+</li>
+</ul>
+<p><strong>set类型数据操作的注意事项</strong></p>
+<p><img src="/2021/10/23/redis-study/image-20211024155742644.png" alt="set注意事项"></p>
+<h5 id="2-5-sorted-set类型"><a href="#2-5-sorted-set类型" class="headerlink" title="2.5 sorted_set类型"></a>2.5 sorted_set类型</h5><ul>
+<li>新的存储需求： 数据排序有利于数据的有效展示，需要提供一种可以根据自身特征进行排序的方式</li>
+<li>需要新的数据结构： 新的存储模型，可以保存可排序的数据</li>
+<li>sorted_set 字段： 在set 的存储结构基础上添加可排序字段</li>
+</ul>
+<p><img src="/2021/10/23/redis-study/image-20211024161937437.png" alt="sorted_set类型"></p>
+<h6 id="sorted-set数据类型基本操作"><a href="#sorted-set数据类型基本操作" class="headerlink" title="sorted_set数据类型基本操作"></a>sorted_set数据类型基本操作</h6><ul>
+<li><p>添加数据</p>
+<pre class="line-numbers language-none"><code class="language-none">zadd key sorce1(排序字段) member1 [sorce2 member2]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>获取全部数据(正序/逆序)</p>
+<pre class="line-numbers language-none"><code class="language-none">zrange key start stop [withscores]
+zrevrange key start stop [withscores]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>删除数据</p>
+<pre class="line-numbers language-none"><code class="language-none">zren key member [member ...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024162630099.png" alt="sorted_set类型基本操作"></p>
+</li>
+<li><p>按条件获取数据</p>
+<pre class="line-numbers language-none"><code class="language-none">zrangebyscore key min max [withscores] [limit]
+zrevrangebyscore key max min [withscores]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>按条件删除数据</p>
+<pre class="line-numbers language-none"><code class="language-none">zremrangebyrank key strat stop
+zremrangebyscore key min max  # max &gt;score &gt;min<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>获取集合数据总量</p>
+<pre class="line-numbers language-none"><code class="language-none">zcard key
+zcount key min max<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>集合交，并操作</p>
+<pre class="line-numbers language-none"><code class="language-none">zinterstore destination numkeys(集合个数) key [key ...]
+zunionstore destination numkeys key [key ...]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>合并后value相同的值，score会相加，新集合再进行排序</p>
+</li>
+</ul>
+<h6 id="sorted-set类型数据扩展操作"><a href="#sorted-set类型数据扩展操作" class="headerlink" title="sorted_set类型数据扩展操作"></a>sorted_set类型数据扩展操作</h6><ul>
+<li><p>获取数据对应的索引</p>
+<pre class="line-numbers language-none"><code class="language-none">zrank key member
+zrevrank key member<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>score值获取与修改</p>
+<pre class="line-numbers language-none"><code class="language-none">zscore key member
+zincrby key increment member<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ul>
+<p><strong>sorted_set类型数据操作的注意事项</strong></p>
+<p><img src="/2021/10/23/redis-study/image-20211024171018363.png" alt="sorted_set类型数据操作的注意事项"></p>
+<h5 id="2-6-通用命令"><a href="#2-6-通用命令" class="headerlink" title="2.6 通用命令"></a>2.6 通用命令</h5><h6 id="key通用操作"><a href="#key通用操作" class="headerlink" title="key通用操作"></a>key通用操作</h6><p>key特征： key 是一个字符串，通过key获取热Redis中保存的数据</p>
+<ul>
+<li><p>删除指定key</p>
+<pre class="line-numbers language-none"><code class="language-none">del key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>获取key 是否存在</p>
+<pre class="line-numbers language-none"><code class="language-none">exists key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>获取key的类型</p>
+<pre class="line-numbers language-none"><code class="language-none">type key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h6 id="key扩展操作"><a href="#key扩展操作" class="headerlink" title="key扩展操作"></a>key扩展操作</h6><ul>
+<li><p>为指定key设置有效期</p>
+<pre class="line-numbers language-none"><code class="language-none">expire key seconds
+pexpire key milliseconds(毫秒)
+expireat key timeout(时间戳)
+pexpireat key millisecons-timeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>获取key的有效时间</p>
+<pre class="line-numbers language-none"><code class="language-none">ttl key
+pttl key(时间戳)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>切换key从时效性转换为永久性</p>
+<pre class="line-numbers language-none"><code class="language-none">persist key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h6 id="key查询操作"><a href="#key查询操作" class="headerlink" title="key查询操作"></a>key查询操作</h6><ul>
+<li><p>查询key</p>
+<pre class="line-numbers language-none"><code class="language-none">keys pattern(*  ?   [])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2021/10/23/redis-study/image-20211024202113015.png" alt="查询模式规则"></p>
+</li>
+</ul>
+<h6 id="key其他操作"><a href="#key其他操作" class="headerlink" title="key其他操作"></a>key其他操作</h6><ul>
+<li><p>key改名</p>
+<pre class="line-numbers language-none"><code class="language-none">rename key newkey(如果newkey存在，则覆盖)
+renamenx key newkey(newkey不存在的情况下)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>为所有key进行排序</p>
+<pre class="line-numbers language-none"><code class="language-none">sort<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>其他key通用操作</p>
+<pre class="line-numbers language-none"><code class="language-none">help @generic<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h5 id="db通用指令"><a href="#db通用指令" class="headerlink" title="db通用指令"></a>db通用指令</h5><h6 id="数据库基本操作"><a href="#数据库基本操作" class="headerlink" title="数据库基本操作"></a>数据库基本操作</h6><p>redis提供16个数据库，每个数据库之间相互独立</p>
+<ul>
+<li><p>切换数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">select index<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>其他操作</p>
+<pre class="line-numbers language-none"><code class="language-none">quit
+ping (测试服务器) pong
+echo message(输出日志)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>移动操作</p>
+<pre class="line-numbers language-none"><code class="language-none">move key db   (剪切)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>数据清除</p>
+<pre class="line-numbers language-none"><code class="language-none">dbsize   (查看数据数量)
+flushdb  (删除当前库数据)
+flushall  (删除所有库数据)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h4 id="解决方案列表"><a href="#解决方案列表" class="headerlink" title="解决方案列表"></a>解决方案列表</h4><p><img src="/2021/10/23/redis-study/image-20211024201016662.png" alt="解决方案列表"></p>
+<h3 id="Jeids"><a href="#Jeids" class="headerlink" title="Jeids"></a>Jeids</h3>
                 
             </div>
             <hr/>
@@ -817,12 +1010,12 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/redis/">
-                                    <span class="chip bg-color">redis</span>
-                                </a>
-                            
                                 <a href="/tags/nosql/">
                                     <span class="chip bg-color">nosql</span>
+                                </a>
+                            
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
                                 </a>
                             
                         </div>
@@ -1002,15 +1195,15 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="git_do">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="git_study">
                         
-                        <span class="card-title">git_do</span>
+                        <span class="card-title">git_study</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            关于git的学习
                         
                     </div>
                     <div class="publish-info">
@@ -1074,12 +1267,12 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
                     <a href="/tags/nosql/">
                         <span class="chip bg-color">nosql</span>
+                    </a>
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
@@ -1283,7 +1476,7 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.8k</span>
+                        class="white-color">3.5k</span>
             
             
             

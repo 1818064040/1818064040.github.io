@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Blog</title>
   
-  <subtitle>欢迎我的朋友</subtitle>
+  <subtitle>永远少年</subtitle>
   <link href="http://1818064040.github.io/atom.xml" rel="self"/>
   
   <link href="http://1818064040.github.io/"/>
-  <updated>2021-10-23T13:58:03.693Z</updated>
+  <updated>2021-10-24T14:58:38.899Z</updated>
   <id>http://1818064040.github.io/</id>
   
   <author>
@@ -17,18 +17,62 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Jedis_study</title>
+    <link href="http://1818064040.github.io/2021/10/24/jedis-study/"/>
+    <id>http://1818064040.github.io/2021/10/24/jedis-study/</id>
+    <published>2021-10-24T13:47:28.000Z</published>
+    <updated>2021-10-24T14:58:38.899Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Jedis&quot;&gt;&lt;a href=&quot;#Jedis&quot; class=&quot;headerlink&quot; title=&quot;Jedis&quot;&gt;&lt;/a&gt;Jedis&lt;/h1&gt;&lt;h3 id=&quot;Jedis简介&quot;&gt;&lt;a href=&quot;#Jedis简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Redis" scheme="http://1818064040.github.io/tags/Redis/"/>
+    
+    <category term="Jedis" scheme="http://1818064040.github.io/tags/Jedis/"/>
+    
+    <category term="nosql" scheme="http://1818064040.github.io/tags/nosql/"/>
+    
+    <category term="Java" scheme="http://1818064040.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>my-live-and-my-love</title>
+    <link href="http://1818064040.github.io/2021/10/24/my-live-and-my-love/"/>
+    <id>http://1818064040.github.io/2021/10/24/my-live-and-my-love/</id>
+    <published>2021-10-24T06:29:50.000Z</published>
+    <updated>2021-10-24T09:14:42.245Z</updated>
+    
+    
+    
+    
+    
+    <category term="live-and-love" scheme="http://1818064040.github.io/tags/live-and-love/"/>
+    
+  </entry>
+  
+  <entry>
     <title>给懒懒炫耀一下</title>
     <link href="http://1818064040.github.io/2021/10/23/gei-lan-lan-xuan-yao-yi-xia/"/>
     <id>http://1818064040.github.io/2021/10/23/gei-lan-lan-xuan-yao-yi-xia/</id>
     <published>2021-10-23T13:55:44.000Z</published>
-    <updated>2021-10-23T13:58:03.693Z</updated>
+    <updated>2021-10-24T09:16:56.526Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;hello-lanlan&quot;&gt;&lt;a href=&quot;#hello-lanlan&quot; class=&quot;headerlink&quot; title=&quot;hello lanlan&quot;&gt;&lt;/a&gt;hello</summary>
+    <summary type="html">&lt;h1 id=&quot;你看到的都是我想让你看到的&quot;&gt;&lt;a href=&quot;#你看到的都是我想让你看到的&quot; class=&quot;headerlink&quot; title=&quot;你看到的都是我想让你看到的&quot;&gt;&lt;/a&gt;你看到的都是我想让你看到的&lt;/h1&gt;&lt;h2 id=&quot;你看到的都是我想让你看到的-1&quot;&gt;&lt;a</summary>
         
       
     
@@ -40,11 +84,11 @@
   </entry>
   
   <entry>
-    <title>git_do</title>
+    <title>git_study</title>
     <link href="http://1818064040.github.io/2021/10/23/git-do/"/>
     <id>http://1818064040.github.io/2021/10/23/git-do/</id>
     <published>2021-10-23T13:51:40.000Z</published>
-    <updated>2021-10-23T13:52:39.523Z</updated>
+    <updated>2021-10-24T12:41:32.927Z</updated>
     
     
       
@@ -67,7 +111,7 @@
     <link href="http://1818064040.github.io/2021/10/23/redis-study/"/>
     <id>http://1818064040.github.io/2021/10/23/redis-study/</id>
     <published>2021-10-23T12:14:03.000Z</published>
-    <updated>2021-10-24T04:48:26.976Z</updated>
+    <updated>2021-10-24T12:40:17.809Z</updated>
     
     
       
@@ -81,9 +125,9 @@
     
     
     
-    <category term="redis" scheme="http://1818064040.github.io/tags/redis/"/>
-    
     <category term="nosql" scheme="http://1818064040.github.io/tags/nosql/"/>
+    
+    <category term="redis" scheme="http://1818064040.github.io/tags/redis/"/>
     
   </entry>
   

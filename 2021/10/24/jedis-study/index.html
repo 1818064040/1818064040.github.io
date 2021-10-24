@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git_study, Blog">
-    <meta name="description" content="关于git的学习">
+    <meta name="keywords" content="Jedis_study, Blog">
+    <meta name="description" content="Java管理Redis工具Jedis">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>git_study | Blog</title>
+    <title>Jedis_study | Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -419,12 +419,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git_study</h1>
+                    <h1 class="description center-align post-title">Jedis_study</h1>
                 </div>
             </div>
         </div>
@@ -540,8 +540,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/Redis/">
+                                <span class="chip bg-color">Redis</span>
+                            </a>
+                        
+                            <a href="/tags/Jedis/">
+                                <span class="chip bg-color">Jedis</span>
+                            </a>
+                        
+                            <a href="/tags/nosql/">
+                                <span class="chip bg-color">nosql</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -556,7 +568,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-23
+                    2021-10-24
                 </div>
                 
 
@@ -565,7 +577,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    771
+                    495
                 </div>
                 
 
@@ -590,78 +602,131 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Github使用"><a href="#Github使用" class="headerlink" title="Github使用"></a>Github使用</h1><h2 id="github文件区域"><a href="#github文件区域" class="headerlink" title="github文件区域"></a>github文件区域</h2><pre class="line-numbers language-none"><code class="language-none">1.工作区 workspace
-	未跟踪与未暂存文件处于本区
-2.暂存区 index
-	提交到仓库之前的缓存区
-3.仓库
-	* 本地仓库
-	* 远程仓库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h1><h3 id="Jedis简介"><a href="#Jedis简介" class="headerlink" title="Jedis简介"></a>Jedis简介</h3><p>jedis: Java语言连Redis数据库的工具</p>
+<h3 id="Jedis使用"><a href="#Jedis使用" class="headerlink" title="Jedis使用"></a>Jedis使用</h3><h4 id="Jedis简单使用"><a href="#Jedis简单使用" class="headerlink" title="Jedis简单使用"></a>Jedis简单使用</h4><ol>
+<li><p>导包</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>redis.clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>jedis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.9.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>编写代码</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//插入数据</span>
+	<span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//1.连接Redis</span>
+        <span class="token class-name">Jedis</span> jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//2.操作Redis</span>
+        jedis<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"wang"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//3.关闭连接</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token comment">//获取数据</span>
+	<span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//1.连接Redis</span>
+        <span class="token class-name">Jedis</span> jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//2.操作Redis</span>
+        <span class="token class-name">String</span> name <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//3.关闭连接</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="GitHub文件状态"><a href="#GitHub文件状态" class="headerlink" title="GitHub文件状态"></a>GitHub文件状态</h2><pre><code>1.未跟踪 untracked
-    新创建一个文件，处于未跟踪状态，文件位于工作区。
-2.未暂存 unstaged
-    修改一个文件，处于未暂存状态，文件位于工作区。
-3.已暂存 
-    为暂存与为跟踪文件初步提交变为已暂存
-4.已提交
-5.不需管理
-    创建 .gitingore文件，在其中说明不需管理的文件
-</code></pre>
-<h2 id="GitHub常用命令"><a href="#GitHub常用命令" class="headerlink" title="GitHub常用命令"></a>GitHub常用命令</h2><pre><code>1. git init 初始化git仓库
-(*)2. git add 工作区文件提交到暂存区  状态：工作区 -&gt; 暂存区
-    add . :添加所有文件到暂存区
-    add 文件名 :提交单个文件
-(*)3. git commit  提交到仓库  暂存区 -&gt; 本地仓库
-    git commit -m "'说明/标记'"
-4. git status 查看状态
-(*)5. git log     打印提交记录(日志)
-    log --all 显示所有分支
-    log --pretty=oneline  将提交信息显示为一行
-    log --abbrey-commit 使得输出的commit更简短
-    log --graph 以图的方式显示
-(*)6.git reset --hard commitID(提交记录)  版本回退 还原以前版本
-7.git reflog 查看删除记录（回滚之后可以看到已经删除的提交记录，包含commit记录）
-</code></pre>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><pre class="line-numbers language-none"><code class="language-none">	为了进行协同开发时，各个用户开发之间互不影响。
-	工作区只能为一个分支进行服务
-	每个分区
-(*)- git branch   查看本地分支
-	-git branch vv 详细信息
-(*)- git branch  name(分支名称)  创建新分支  
-(*)- git checkout name   切换分支
-(*)- git checkout -b name  切换并创建分支
-(*)- git merge name  合并提交分支，一个分支上的提交可以合并到另一个分支
-(*)	- git branch -d name 删除分支，删除时做各种检查，只能删除其他分支，不能删除当前分支。、
-- git branch -D name 强制删除，不做检查<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/10/24/jedis-study/image-20211024220538551.png" alt="获取数据"></p>
+</li>
+</ol>
+<h5 id="操作list数据类型"><a href="#操作list数据类型" class="headerlink" title="操作list数据类型"></a>操作list数据类型</h5><ol>
+<li><p>代码展示</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       <span class="token comment">//1.连接Redis</span>
+       <span class="token class-name">Jedis</span> jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token comment">//2.操作Redis</span>
+       jedis<span class="token punctuation">.</span><span class="token function">lpush</span><span class="token punctuation">(</span><span class="token string">"list1"</span><span class="token punctuation">,</span><span class="token string">"a1"</span><span class="token punctuation">,</span><span class="token string">"a2"</span><span class="token punctuation">,</span><span class="token string">"a3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       jedis<span class="token punctuation">.</span><span class="token function">rpush</span><span class="token punctuation">(</span><span class="token string">"list1"</span><span class="token punctuation">,</span><span class="token string">"b1"</span><span class="token punctuation">,</span><span class="token string">"b2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> list1 <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">lrange</span><span class="token punctuation">(</span><span class="token string">"list1"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> string <span class="token operator">:</span> list1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+       <span class="token comment">//3.关闭连接</span>
+       jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>结果展示<br><img src="/2021/10/24/jedis-study/image-20211024221049216.png" alt="结果展示"></p>
+</li>
+</ol>
+<h5 id="操作hash数据类型"><a href="#操作hash数据类型" class="headerlink" title="操作hash数据类型"></a>操作hash数据类型</h5><ol>
+<li><p>代码展示</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//1.连接Redis</span>
+        <span class="token class-name">Jedis</span> jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//2.操作Redis</span>
+        jedis<span class="token punctuation">.</span><span class="token function">hset</span><span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"wang"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">hset</span><span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">,</span><span class="token string">"20"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">hset</span><span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span><span class="token string">"address"</span><span class="token punctuation">,</span><span class="token string">"xian"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<h2 id="git远程仓库托管"><a href="#git远程仓库托管" class="headerlink" title="git远程仓库托管"></a>git远程仓库托管</h2><pre class="line-numbers language-none"><code class="language-none">- git config --global user.name username 用户名
-- git config --global user.email email 邮箱
-- ssh -keygen -t rsa 请求ssh密钥
-	获取密钥后复制公钥到github,
-- cat ~/.ssh/id_rsa.pub 获取密钥
-- ssh -T git@github.com 验证是否连接成功<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> hash1 <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">hgetAll</span><span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>hash1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//3.关闭连接</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>结果展示<br><img src="/2021/10/24/jedis-study/image-20211024221552156.png" alt="结果展示-hash"></p>
+</li>
+</ol>
+<h4 id="Jedis工具类"><a href="#Jedis工具类" class="headerlink" title="Jedis工具类"></a>Jedis工具类</h4><h5 id="基于连接池获取连接"><a href="#基于连接池获取连接" class="headerlink" title="基于连接池获取连接"></a>基于连接池获取连接</h5><ul>
+<li><p>jedispool:Jedis提供的连接池技术<br>poolConfig: 连接池配置对象</p>
+<p>host:reids 服务地址</p>
+<p>port：redis服务端口号</p>
+</li>
+<li><p>代码展示</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span></span><span class="token class-name">Jedis</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span></span><span class="token class-name">JedisPool</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span></span><span class="token class-name">JedisPoolConfig</span><span class="token punctuation">;</span>
 
- <pre class="line-numbers language-none"><code class="language-none">- git remote add name(名称）"url(ssh)" 绑定远程仓库
-- git remote 查看远程仓库
-- git push [-f]  [--set--upstream] [远端名称[本地分支名][远端分支名]]
-- git push name（仓库名） name(分支名称) 推送本地分支到远程仓库
-	-git push --set --upstream name（仓库名） name(分支名称) 推送本地分支到远程仓库并建立和远端分支的关联关系
-	-f 强制执行
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisUtils</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">JedisPool</span> jp<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token class-name">JedisPoolConfig</span> jpc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPoolConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jpc<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//最大连接池数</span>
+        jpc<span class="token punctuation">.</span><span class="token function">setMaxIdle</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//最大连接数</span>
+         jp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span>jpc<span class="token punctuation">,</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span><span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span>  <span class="token keyword">static</span> <span class="token class-name">Jedis</span> <span class="token function">getJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+         <span class="token keyword">return</span> jp<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>改进</p>
+<p>建立redis.properties</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">redis.host</span><span class="token punctuation">=</span><span class="token attr-value">127.0.0.1</span>
+<span class="token attr-name">redis.port</span><span class="token punctuation">=</span><span class="token attr-value">6379</span>
+<span class="token attr-name">redis.maxTotal</span><span class="token punctuation">=</span><span class="token attr-value">30</span>
+<span class="token attr-name">redis.maxIdle</span><span class="token punctuation">=</span><span class="token attr-value">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h4><pre class="line-numbers language-none"><code class="language-none">- git clone <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>代码</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span></span><span class="token class-name">Jedis</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span></span><span class="token class-name">JedisPool</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span></span><span class="token class-name">JedisPoolConfig</span><span class="token punctuation">;</span>
 
-<p><strong>远程仓库地址 [目录] 将远程仓库克隆到本地</strong></p>
-<h4 id="抓取"><a href="#抓取" class="headerlink" title="抓取"></a>抓取</h4><pre class="line-numbers language-none"><code class="language-none">- git fetch [remote name](远程) [branch name](分支)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ResourceBundle</span><span class="token punctuation">;</span>
 
-<p>​    <strong>将仓库中的更新都拉取到本地，但不会进行合并</strong></p>
-<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><pre class="line-numbers language-none"><code class="language-none">- git merge (remote_name)/(branch_name)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>合并本地分支和远程分支</strong></p>
-<h4 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h4><pre class="line-numbers language-none"><code class="language-none">- git pull [remote name] [branch name]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>将仓库中的修改都拉到本地并进行合并，等于  fetch + merge</p>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisUtils</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">JedisPool</span> jp<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token comment">//获取配置文件</span>
+        <span class="token class-name">ResourceBundle</span>  rb<span class="token operator">=</span> <span class="token class-name">ResourceBundle</span><span class="token punctuation">.</span><span class="token function">getBundle</span><span class="token punctuation">(</span><span class="token string">"redis"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">JedisPoolConfig</span> jpc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPoolConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jpc<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"redis.maxTotal"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//最大连接数</span>
+        jpc<span class="token punctuation">.</span><span class="token function">setMaxIdle</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"redis.maxIdle"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//最小连接数</span>
+         jp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span>jpc<span class="token punctuation">,</span>rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"redis.host"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"redis.port"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span>  <span class="token keyword">static</span> <span class="token class-name">Jedis</span> <span class="token function">getJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+         <span class="token keyword">return</span> jp<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
 
                 
             </div>
@@ -688,7 +753,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://1818064040.github.io/2021/10/23/git-do/">http://1818064040.github.io/2021/10/23/git-do/</a>
+                    <a href="http://1818064040.github.io/2021/10/24/jedis-study/">http://1818064040.github.io/2021/10/24/jedis-study/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -726,8 +791,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/Redis/">
+                                    <span class="chip bg-color">Redis</span>
+                                </a>
+                            
+                                <a href="/tags/Jedis/">
+                                    <span class="chip bg-color">Jedis</span>
+                                </a>
+                            
+                                <a href="/tags/nosql/">
+                                    <span class="chip bg-color">nosql</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -899,29 +976,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/10/23/gei-lan-lan-xuan-yao-yi-xia/">
+                <a href="/2021/10/24/jedis-study/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="给懒懒炫耀一下">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Jedis_study">
                         
-                        <span class="card-title">给懒懒炫耀一下</span>
+                        <span class="card-title">Jedis_study</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            hello 懒懒
+                            Java管理Redis工具Jedis
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -930,11 +1008,24 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/lanlan/">
-                        <span class="chip bg-color">lanlan</span>
+                    <a href="/tags/Redis/">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                    <a href="/tags/Jedis/">
+                        <span class="chip bg-color">Jedis</span>
+                    </a>
+                    
+                    <a href="/tags/nosql/">
+                        <span class="chip bg-color">nosql</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -948,24 +1039,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/23/redis-study/">
+                <a href="/2021/10/24/my-live-and-my-love/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Redis-study">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="my-live-and-my-love">
                         
-                        <span class="card-title">Redis-study</span>
+                        <span class="card-title">my-live-and-my-love</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            开始Redis的学习啦
+                            努力去发现美吧
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-24
                             </span>
                         <span class="publish-author">
                             
@@ -978,12 +1069,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/nosql/">
-                        <span class="chip bg-color">nosql</span>
-                    </a>
-                    
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/live-and-love/">
+                        <span class="chip bg-color">live-and-love</span>
                     </a>
                     
                 </div>
