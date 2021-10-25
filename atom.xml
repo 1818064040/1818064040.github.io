@@ -6,7 +6,7 @@
   <link href="http://1818064040.github.io/atom.xml" rel="self"/>
   
   <link href="http://1818064040.github.io/"/>
-  <updated>2021-10-24T14:58:38.899Z</updated>
+  <updated>2021-10-25T14:59:12.059Z</updated>
   <id>http://1818064040.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis高级</title>
+    <link href="http://1818064040.github.io/2021/10/25/redis-gao-ji/"/>
+    <id>http://1818064040.github.io/2021/10/25/redis-gao-ji/</id>
+    <published>2021-10-25T02:14:59.000Z</published>
+    <updated>2021-10-25T14:59:12.059Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Redis高级&quot;&gt;&lt;a href=&quot;#Redis高级&quot; class=&quot;headerlink&quot; title=&quot;Redis高级&quot;&gt;&lt;/a&gt;Redis高级&lt;/h1&gt;&lt;h2 id=&quot;liunx中Redi使用&quot;&gt;&lt;a href=&quot;#liunx中Redi使用&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Redis" scheme="http://1818064040.github.io/tags/Redis/"/>
+    
+    <category term="nosql" scheme="http://1818064040.github.io/tags/nosql/"/>
+    
+  </entry>
   
   <entry>
     <title>Jedis_study</title>
@@ -111,7 +136,7 @@
     <link href="http://1818064040.github.io/2021/10/23/redis-study/"/>
     <id>http://1818064040.github.io/2021/10/23/redis-study/</id>
     <published>2021-10-23T12:14:03.000Z</published>
-    <updated>2021-10-24T12:40:17.809Z</updated>
+    <updated>2021-10-25T02:17:34.484Z</updated>
     
     
       
