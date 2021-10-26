@@ -6,7 +6,7 @@
   <link href="http://1818064040.github.io/atom.xml" rel="self"/>
   
   <link href="http://1818064040.github.io/"/>
-  <updated>2021-10-25T14:59:12.059Z</updated>
+  <updated>2021-10-26T12:16:01.330Z</updated>
   <id>http://1818064040.github.io/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Redis集群</title>
+    <link href="http://1818064040.github.io/2021/10/26/redis-ji-qun/"/>
+    <id>http://1818064040.github.io/2021/10/26/redis-ji-qun/</id>
+    <published>2021-10-26T11:48:19.000Z</published>
+    <updated>2021-10-26T12:16:01.330Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Redis集群&quot;&gt;&lt;a href=&quot;#Redis集群&quot; class=&quot;headerlink&quot; title=&quot;Redis集群&quot;&gt;&lt;/a&gt;Redis集群&lt;/h2&gt;&lt;h3 id=&quot;主从复制&quot;&gt;&lt;a href=&quot;#主从复制&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="nosql" scheme="http://1818064040.github.io/tags/nosql/"/>
+    
+    <category term="redis" scheme="http://1818064040.github.io/tags/redis/"/>
+    
+    <category term="集群" scheme="http://1818064040.github.io/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>瞧瞧我发现了什么</title>
+    <link href="http://1818064040.github.io/2021/10/26/qiao-qiao-wo-fa-xian-liao-shi-me/"/>
+    <id>http://1818064040.github.io/2021/10/26/qiao-qiao-wo-fa-xian-liao-shi-me/</id>
+    <published>2021-10-26T11:12:30.000Z</published>
+    <updated>2021-10-26T11:14:29.473Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;span class=&quot;github-emoji&quot;&gt;&lt;span&gt;🐷&lt;/span&gt;&lt;img src=&quot;https://github.githubassets.com/images/icons/emoji/unicode/1f437.png?v8&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="good" scheme="http://1818064040.github.io/tags/good/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Redis高级</title>
     <link href="http://1818064040.github.io/2021/10/25/redis-gao-ji/"/>
     <id>http://1818064040.github.io/2021/10/25/redis-gao-ji/</id>
     <published>2021-10-25T02:14:59.000Z</published>
-    <updated>2021-10-25T14:59:12.059Z</updated>
+    <updated>2021-10-26T11:47:37.357Z</updated>
     
     
       
@@ -90,7 +140,7 @@
     <link href="http://1818064040.github.io/2021/10/23/gei-lan-lan-xuan-yao-yi-xia/"/>
     <id>http://1818064040.github.io/2021/10/23/gei-lan-lan-xuan-yao-yi-xia/</id>
     <published>2021-10-23T13:55:44.000Z</published>
-    <updated>2021-10-24T09:16:56.526Z</updated>
+    <updated>2021-10-26T11:16:18.743Z</updated>
     
     
       

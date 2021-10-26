@@ -569,7 +569,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    3.4k
                 </div>
                 
 
@@ -611,12 +611,12 @@ dir   路径		//生成文件位置<span aria-hidden="true" class="line-numbers-r
 <p>新建conf目录，用来你管理自己的配置文件</p>
 </li>
 </ul>
-<h2 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h2><h4 id="持久化介绍"><a href="#持久化介绍" class="headerlink" title="持久化介绍"></a>持久化介绍</h4><h5 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h5><ul>
+<h2 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h2><h4 id="持久-化介绍"><a href="#持久-化介绍" class="headerlink" title="持久 化介绍"></a>持久 化介绍</h4><h5 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h5><ul>
 <li>Redis运行在内存上，数据容易丢失，需要持久化保存在硬盘上，防止数据丢失</li>
 </ul>
 <h5 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h5><ul>
 <li>数据(快照)RDB：<br>将当前数据状态进行保存，快照形式，存储数据结果，存储格式简单，关注点在数据</li>
-<li>过程(日志)：<br> 将当前数据的操作过程进行保存，日志形式，存储操作过程，存储格式复杂，关注点在操作过程</li>
+<li>过程(日志)：<br>将当前数据的操作过程进行保存，日志形式，存储操作过程，存储格式复杂，关注点在操作过程</li>
 </ul>
 <h4 id="RDB持久化详情"><a href="#RDB持久化详情" class="headerlink" title="RDB持久化详情"></a>RDB持久化详情</h4><h5 id="第一种RDB-启动方式"><a href="#第一种RDB-启动方式" class="headerlink" title="第一种RDB 启动方式"></a>第一种RDB 启动方式</h5><h6 id="命令启动"><a href="#命令启动" class="headerlink" title="命令启动"></a>命令启动</h6><ul>
 <li>命令</li>
@@ -757,6 +757,210 @@ aof_base_size<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <h4 id="RDB与AOF区别"><a href="#RDB与AOF区别" class="headerlink" title="RDB与AOF区别"></a>RDB与AOF区别</h4><p><img src="/2021/10/25/redis-gao-ji/image-20211025225117159.png" alt="RDB vs AOF "></p>
 <p><strong>RDB与AOF选择</strong></p>
 <p><img src="/2021/10/25/redis-gao-ji/image-20211025225328795.png" alt="RDB与AOF选择"></p>
+<h2 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h2><h5 id="1-事务简介"><a href="#1-事务简介" class="headerlink" title="1.事务简介"></a>1.事务简介</h5><ul>
+<li>​    redis事务就是一个命令执行的队列，将一系列预定义命令包装成一个整体(一个队列).当执行时，一次性按照添加顺序依次执行，中途不会被打断或干扰</li>
+<li>一个队列中，一次性，顺序性，排他性的执行局一系列命令</li>
+</ul>
+<h5 id="2-事务基本操作"><a href="#2-事务基本操作" class="headerlink" title="2.事务基本操作"></a>2.事务基本操作</h5><ul>
+<li><p>开启事务: 设定事务的开启位置，此指令执行后，后续所有指令均加入到事务中</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">multi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>执行事务：设定事务的结束位置，同时执行事务，与multi成对出现，成对使用</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">exec<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>事务工作流程</strong></p>
+<p><img src="/2021/10/25/redis-gao-ji/image-20211026151843167.png" alt="事务工作流程"></p>
+<p><img src="/2021/10/25/redis-gao-ji/image-20211026151920696.png" alt="事务工作流程2"></p>
+<p><strong>事务注意事项</strong></p>
+<p><img src="/2021/10/25/redis-gao-ji/image-20211026152105726.png" alt="事务注意事项"></p>
+<p>​    已经执行完毕的命令对应的数据不会自动回滚，需要程序员自己在代码中实现回滚</p>
+<p><strong>手动进行事务回滚</strong></p>
+<ul>
+<li>记录操作过程中被影响的数据之前的状态<ul>
+<li>单数据：string</li>
+<li>多数据： hash,list,set,zset</li>
+</ul>
+</li>
+<li>设置指令恢复所有的被修改的项、<ul>
+<li>单数据：直接set(注意周边属性，例如时效)</li>
+<li>多数据：修改对应值或整体克隆</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-事务-锁"><a href="#3-事务-锁" class="headerlink" title="3.事务-锁"></a>3.事务-锁</h5><p>​    <strong>基于特定条件的事务操作-锁</strong></p>
+<ul>
+<li><p>对key添加监视锁，在执行exec前如果key发生了变化，终止事务执行</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">watch key1 [key2]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>取消对所有key的监视</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">unwatch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>基于特定条件的事务执行-分布式锁</strong>（设计概念）</p>
+<ul>
+<li><p>使用setnx设置一个公共锁</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sentx lock-key value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>利用setnx，命令的返回值特征，有值则返回设置成功，无值则返回设置失败</p>
+<ul>
+<li>对于设置成功的，拥有控制权，进行下一步操作</li>
+<li>设置失败的，不具有控制权，排队或等待</li>
+</ul>
+</li>
+<li><p>操作完成删除公共锁</p>
+<pre class="line-numbers language-none"><code class="language-none">del lock-key <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>释放锁，以供其他进程使用</p>
+</li>
+</ul>
+<p><strong>分布式锁的死锁</strong></p>
+<ul>
+<li><p>由于多次加锁，可能出现加锁后未解锁，会出现死锁现象，其他用户无法使用，需要系统级保底方案</p>
+</li>
+<li><p>解决方案-加时效(到时效自动释放锁)</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">expire lock-key second
+pexpire lock-key milliseconds<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="过期数据的删除策略"><a href="#过期数据的删除策略" class="headerlink" title="过期数据的删除策略"></a>过期数据的删除策略</h2><p><strong>redis中的数据特征</strong></p>
+<p>redis是一种内存级数据库，所有的数据均被存放在内存中，内存中的数据可以通过TTL指令获取其状态</p>
+<ul>
+<li>XX：具有时效性的数据</li>
+<li>-1：永久有效的数据</li>
+<li>-2：<strong>已经过期的数据</strong>或被删除的数据或未被定义的</li>
+</ul>
+<h5 id="时效性数据的存储结构"><a href="#时效性数据的存储结构" class="headerlink" title="时效性数据的存储结构"></a>时效性数据的存储结构</h5><p><img src="/2021/10/25/redis-gao-ji/image-20211026160001175.png" alt="image-20211026160001175"></p>
+<p><strong>目标：在内存占用和CPU占用之间寻找一种平衡</strong>。顾此失彼都会造成整体性能的下降，甚至引发服务器宕机或内存泄漏</p>
+<h6 id="定时删除"><a href="#定时删除" class="headerlink" title="定时删除"></a>定时删除</h6><ul>
+<li>创建一个定时器，当key设置有过期时间，且过期时间到达时，由定时器任务立即执行对键的删除操作</li>
+<li>优点：节省内存，到时就删除，快速释放掉不必要的内存占用</li>
+<li>缺点：CPU压力很大，无论CPU此时负载多高，均占用CPU，会影响redis服务器响应时间和指令你吞吐量</li>
+<li>总结：用处理器性能换取存储空间(拿时间换空间)</li>
+</ul>
+<h6 id="惰性删除"><a href="#惰性删除" class="headerlink" title="惰性删除"></a>惰性删除</h6><ul>
+<li>数据到达过期时间，不做处理，等下次访问数据时删除<ul>
+<li>如果未过期，返回数据</li>
+<li>如果已经过期，删除，返回不存在</li>
+</ul>
+</li>
+<li>优点：节约CPU性能，发现必须删除的时候才删除</li>
+<li>缺点：内存压力很大，出现长期占用内存的数据</li>
+<li>总结：用存储空间换取处理器性能(空间换时间)</li>
+</ul>
+<h6 id="定期删除"><a href="#定期删除" class="headerlink" title="定期删除"></a>定期删除</h6><img src="/2021/10/25/redis-gao-ji/image-20211026161605435.png" alt="定期删除" style="zoom:120%;">
+
+<ul>
+<li>周期性轮询redis库中的有时效数据，采用随机抽查的策略，利用过期数据占比的方式控制删除频率</li>
+<li>特定1：CPU性能占用设置有峰值，检测频率可自己设置</li>
+<li>特定2：内存压力不是很大，长期占用内存的冷数据会被持续清理</li>
+<li>总结：周期性抽查内存空间(随机抽查，重点抽查)</li>
+</ul>
+<h6 id="删除策略对比"><a href="#删除策略对比" class="headerlink" title="删除策略对比"></a>删除策略对比</h6><p><img src="/2021/10/25/redis-gao-ji/image-20211026162142157.png" alt="删除策略对比"></p>
+<h6 id="逐出算法"><a href="#逐出算法" class="headerlink" title="逐出算法"></a>逐出算法</h6><p><img src="/2021/10/25/redis-gao-ji/image-20211026162533027.png" alt="算法引出"></p>
+<p><strong>影响数据逐出的相关配置</strong></p>
+<ul>
+<li><strong>最大可使用内存</strong>：<strong>maxmenory</strong><br>占用物理内存的比例，默认为0，表示不限制，生产环境中根据需求设定，通常设置在50%以上</li>
+<li>每次<strong>选取待删除数据</strong>的个数：<strong>maxmenory-samples</strong><br>选取数据时并不会全全库扫描，导致严重的性能消耗，降低读写性能，因此采用随机获取数据的方式做为待检测删除的数据</li>
+<li>删除策略：<strong>maxmerory -policy</strong><br>达到最大内存后的，对被挑选出来的数据进行删除的策略</li>
+</ul>
+<h6 id="逐出策略分类"><a href="#逐出策略分类" class="headerlink" title="逐出策略分类"></a>逐出策略分类</h6><p><img src="/2021/10/25/redis-gao-ji/image-20211026164422454.png" alt="逐出策略"></p>
+<p>推荐：volatile-lru</p>
+<pre class="line-numbers language-none"><code class="language-none">maxmemory-policy volatile-lru<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="服务器基础配置"><a href="#服务器基础配置" class="headerlink" title="服务器基础配置"></a>服务器基础配置</h2><h4 id="服务器设定"><a href="#服务器设定" class="headerlink" title="服务器设定"></a>服务器设定</h4><ul>
+<li><p>设置服务器以守护进程的方式进行</p>
+<pre class="line-numbers language-none"><code class="language-none">daemonize yse|no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>绑定主机地址</p>
+<pre class="line-numbers language-none"><code class="language-none">bind 127.0.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>设置服务器端口号</p>
+<pre class="line-numbers language-none"><code class="language-none">port 6379<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>设置数据库数量</p>
+<pre class="line-numbers language-none"><code class="language-none">databases 16<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h6 id="日志配置"><a href="#日志配置" class="headerlink" title="日志配置"></a>日志配置</h6><ul>
+<li><p>设置服务器以指定日志级别记录</p>
+<pre class="line-numbers language-none"><code class="language-none">loglevel debug|verbose|notice|warning<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>日志记录文件名</p>
+<pre class="line-numbers language-none"><code class="language-none">logfile 端口号.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>注意</strong>：日志级别开发期设置为verbose即可，生产环境中配置为notice，简化日志输出量，降低写日志IO的频率</p>
+<h6 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h6><ul>
+<li><p>设置同一时间最大客户端连接数，默认无限制。当客户端连接达到上限，Redis会关闭新的连接</p>
+<pre class="line-numbers language-none"><code class="language-none">maxclients 0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>客户端闲置等待最大时长，达到最大值关闭连接，如需关闭该功能，设置为0</p>
+<pre class="line-numbers language-\" data-language="\"><code class="language-\">timeout 300<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h6 id="多服务器快捷配置"><a href="#多服务器快捷配置" class="headerlink" title="多服务器快捷配置"></a>多服务器快捷配置</h6><ul>
+<li><p>导入并加载指定配置文件信息，用于快速创建redis公共配置较多的redis实例配置文件,便于维护</p>
+<pre class="line-numbers language-none"><code class="language-none">include /path/server-端口号。conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h2 id="Redis-高级数据类型"><a href="#Redis-高级数据类型" class="headerlink" title="Redis 高级数据类型"></a>Redis 高级数据类型</h2><p>具有明显的模型特征，为解决具体的业务而生</p>
+<h5 id="Bitmaps"><a href="#Bitmaps" class="headerlink" title="Bitmaps"></a>Bitmaps</h5><h6 id="bitmaps类型的基本操作"><a href="#bitmaps类型的基本操作" class="headerlink" title="bitmaps类型的基本操作"></a>bitmaps类型的基本操作</h6><ul>
+<li><p>获取指定key对应偏移量上的bit值</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">getbit key offset<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>设置指定key对应偏移量上的bit值，value只能是1或0</p>
+<pre class="line-numbers language-none"><code class="language-none">setbit key offset value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h6 id="bitmaps类型的扩展操作"><a href="#bitmaps类型的扩展操作" class="headerlink" title="bitmaps类型的扩展操作"></a>bitmaps类型的扩展操作</h6><ul>
+<li><p>对指定key进行按位交，并，非，异或操作，并将结果保存到destkey中</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">bitop op destkey key1 [key2]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>and :交</li>
+<li>or : 并</li>
+<li>not :非</li>
+<li>xor : 异或</li>
+</ul>
+</li>
+<li><p>统计指定key中1的数量<span class="github-emoji"><span>🐷</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f437.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">bitcount key [start end]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h5 id="HyperLogLog"><a href="#HyperLogLog" class="headerlink" title="HyperLogLog"></a>HyperLogLog</h5><p>统计不重复的数据的数量,应用于独立数据的统计</p>
+<p><strong>统计原始</strong>UV</p>
+<ul>
+<li><p>原始方案：set</p>
+<p>存储每个用户的ID</p>
+</li>
+<li><p>改进方案：Bitmaps<br>存储每个用户的状态(bit)</p>
+</li>
+<li><p>全新方案：HyperLogLog</p>
+</li>
+</ul>
+<p>基数：<strong>基数是数据集去重后元素个数</strong></p>
+<p><img src="/2021/10/25/redis-gao-ji/image-20211026192020297.png" alt="基数"></p>
+<p>HyperLogLog是用来做基数统计的，运用了LogLog的算法</p>
+<p><strong>LogLog算法</strong></p>
+<p><img src="/2021/10/25/redis-gao-ji/image-20211026192143670.png" alt="LogLog算法"></p>
+<h6 id="HyperLogLog的基本操作"><a href="#HyperLogLog的基本操作" class="headerlink" title="HyperLogLog的基本操作"></a>HyperLogLog的基本操作</h6><ul>
+<li><p>添加数据</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">pfadd key element [element ...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>统计数据</p>
+<pre class="line-numbers language-none"><code class="language-none">pfcount key [key ...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>合并数据</p>
+<pre class="line-numbers language-none"><code class="language-none">pfmerge destkey sourcekey [sourcekey ...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p><strong>相关说明</strong></p>
+<ul>
+<li>用于进行基数统计，不是集合，不保存数据，只记录数量而不是具体数据</li>
+<li>核心是基数估算算法，最终值存在一定误差</li>
+<li>误差范围：基数估计的结果是一个带有0。81%标准误差的近似值</li>
+<li>消耗空间极小，每个HyperLogLog占用了12K的内存用于标记基数</li>
+<li>不是一次分配12K内存，随着基数增加而增加</li>
+<li>pfmerge命令合并后占用的存储空间为12K，无论之前数据量是多少</li>
+</ul>
+<h5 id="GEO"><a href="#GEO" class="headerlink" title="GEO"></a>GEO</h5><p>设置坐标点，计算坐标点的距离(二维)(经纬？)(估算)</p>
+<h6 id="GEO的基本操作"><a href="#GEO的基本操作" class="headerlink" title="GEO的基本操作"></a>GEO的基本操作</h6><ul>
+<li><p>添加坐标点</p>
+<pre class="line-numbers language-none"><code class="language-none">geoadd key(容器) longitude(X) latitude(Y) member(地点) [longitude latitude member ...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>获取坐标点</p>
+<pre class="line-numbers language-none"><code class="language-none">geopos key member [member ...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>计算坐标点距离</p>
+<pre class="line-numbers language-none"><code class="language-none">geodist key member1 member2 [unit(单位)]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>根据坐标求范围内的数据</p>
+<pre class="line-numbers language-none"><code class="language-none">georadius key longitude latitude radius(距离) m|km|ft|mi [withcoord] [withdist] [withhash] [count count]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>根据点求范围内数据</p>
+<pre class="line-numbers language-none"><code class="language-none">georadiusbymember key member radius(距离) m|km|ft|mi(单位) [withcoord] [withdist(显示距离)] [withhash(显示坐标)] [count count]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>获取指定点对应的坐标hash值</p>
+<pre class="line-numbers language-none"><code class="language-none">gechash  key member [member]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p>这个部分结束了:happy:</p>
+<p>下次见<span class="github-emoji"><span>🤚</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f91a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 
                 
             </div>
@@ -998,30 +1202,29 @@ aof_base_size<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/10/25/redis-gao-ji/">
+                <a href="/2021/10/26/qiao-qiao-wo-fa-xian-liao-shi-me/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Redis高级">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="瞧瞧我发现了什么">
                         
-                        <span class="card-title">Redis高级</span>
+                        <span class="card-title">瞧瞧我发现了什么</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            开始进一步的学习吧
+                            瞧瞧我发现了什么
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1030,16 +1233,11 @@ aof_base_size<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                    <a href="/tags/nosql/">
-                        <span class="chip bg-color">nosql</span>
+                    <a href="/tags/good/">
+                        <span class="chip bg-color">good</span>
                     </a>
                     
                 </div>
@@ -1300,7 +1498,7 @@ aof_base_size<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.8k</span>
+                        class="white-color">7.3k</span>
             
             
             
