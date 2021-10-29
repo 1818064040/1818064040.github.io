@@ -6,7 +6,7 @@
   <link href="http://1818064040.github.io/atom.xml" rel="self"/>
   
   <link href="http://1818064040.github.io/"/>
-  <updated>2021-10-28T09:24:46.130Z</updated>
+  <updated>2021-10-29T08:53:43.006Z</updated>
   <id>http://1818064040.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://1818064040.github.io/2021/10/29/maven-xiang-mu-guan-li/"/>
+    <id>http://1818064040.github.io/2021/10/29/maven-xiang-mu-guan-li/</id>
+    <published>2021-10-29T01:04:46.000Z</published>
+    <updated>2021-10-29T08:53:43.006Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;maven项目管理&quot;&gt;&lt;a href=&quot;#maven项目管理&quot; class=&quot;headerlink&quot; title=&quot;maven项目管理&quot;&gt;&lt;/a&gt;maven项目管理&lt;/h1&gt;&lt;h3 id=&quot;maven简介&quot;&gt;&lt;a href=&quot;#maven简介&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="maven" scheme="http://1818064040.github.io/tags/maven/"/>
+    
+    <category term="java" scheme="http://1818064040.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis集群</title>
