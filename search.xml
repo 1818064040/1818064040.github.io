@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title>有点想说的话</title>
+      <link href="/2021/11/12/you-dian-xiang-shuo-de-hua/"/>
+      <url>/2021/11/12/you-dian-xiang-shuo-de-hua/</url>
+      
+        <content type="html"><![CDATA[<ul><li></li><li>想去深圳大概是因为某个人吧</li><li>不知道是不是喜欢她，也许也不知道喜欢是什么</li><li>理想很难，我喜欢白日做梦</li><li>也许知道，也许不知道</li><li></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> no </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微服务</title>
+      <link href="/2021/11/06/wei-fu-wu/"/>
+      <url>/2021/11/06/wei-fu-wu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h1><h3 id="初识微服务"><a href="#初识微服务" class="headerlink" title="初识微服务"></a>初识微服务</h3><h5 id="服务架构演变："><a href="#服务架构演变：" class="headerlink" title="服务架构演变："></a>服务架构演变：</h5><p>单体架构:</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107154730271.png" alt="单体架构"></p><p>分布式架构：</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107154920043.png" alt="分布式架构"></p><p>微服务：</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107155758199.png" alt="微服务"></p><h5 id="微服务技术栈"><a href="#微服务技术栈" class="headerlink" title="微服务技术栈"></a>微服务技术栈</h5><p><img src="/2021/11/06/wei-fu-wu/image-20211107152403489.png" alt="技术栈"></p><p><img src="/2021/11/06/wei-fu-wu/image-20211107152434582.png" alt="持续集成"></p><h5 id="微服务技术对比："><a href="#微服务技术对比：" class="headerlink" title="微服务技术对比："></a>微服务技术对比：</h5><p><img src="/2021/11/06/wei-fu-wu/image-20211107160543855.png" alt="微服务技术对比"></p><p><img src="/2021/11/06/wei-fu-wu/image-20211107160937260.png" alt="企业需求"></p><h5 id="SpringCloud："><a href="#SpringCloud：" class="headerlink" title="SpringCloud："></a>SpringCloud：</h5><p><img src="/2021/11/06/wei-fu-wu/image-20211107161117040.png" alt="springCloud"></p><h3 id="微服务入门"><a href="#微服务入门" class="headerlink" title="微服务入门"></a>微服务入门</h3><h5 id="服务拆分及远程调用："><a href="#服务拆分及远程调用：" class="headerlink" title="服务拆分及远程调用："></a>服务拆分及远程调用：</h5><p>服务拆分及注意事项：</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107161609179.png" alt="服务拆分及注意事项"></p><p>服务远程调用：</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107162443719.png" alt="注册RestTemplate"></p><p><img src="/2021/11/06/wei-fu-wu/image-20211107163004978.png" alt="调用RestTemplate"></p><ul><li>注入Bean</li><li>调用RestTemplate发送HTTP请求</li></ul><h4 id="Eureka注册中心"><a href="#Eureka注册中心" class="headerlink" title="Eureka注册中心"></a>Eureka注册中心</h4><p>提供者与消费者：</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107163401616.png" alt="提供者与消费者"></p><p><img src="/2021/11/06/wei-fu-wu/image-20211107163423188.png" alt="服务调用关系"></p><p>eureka作用：</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107164414677.png" alt="eureka作用"></p><p><img src="/2021/11/06/wei-fu-wu/image-20211107164431833.png" alt="总结"></p><p>实现：</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107174113731.png" alt="实现"></p><h5 id="Ribbon负载均衡"><a href="#Ribbon负载均衡" class="headerlink" title="Ribbon负载均衡"></a>Ribbon负载均衡</h5><p>流程</p><p><img src="/2021/11/06/wei-fu-wu/image-20211107174407996.png" alt="流程"></p><p><img src="/2021/11/06/wei-fu-wu/image-20211108150116452.png" alt="策略"></p><p><img src="/2021/11/06/wei-fu-wu/image-20211108150200691.png" alt="饥饿加载"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 微服务 </tag>
+            
+            <tag> springCloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>IO流</title>
       <link href="/2021/10/31/io-liu/"/>
       <url>/2021/10/31/io-liu/</url>

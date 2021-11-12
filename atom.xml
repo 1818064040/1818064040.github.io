@@ -6,7 +6,7 @@
   <link href="http://1818064040.github.io/atom.xml" rel="self"/>
   
   <link href="http://1818064040.github.io/"/>
-  <updated>2021-10-31T08:31:19.120Z</updated>
+  <updated>2021-11-12T14:07:37.093Z</updated>
   <id>http://1818064040.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>有点想说的话</title>
+    <link href="http://1818064040.github.io/2021/11/12/you-dian-xiang-shuo-de-hua/"/>
+    <id>http://1818064040.github.io/2021/11/12/you-dian-xiang-shuo-de-hua/</id>
+    <published>2021-11-12T13:59:29.000Z</published>
+    <updated>2021-11-12T14:07:37.093Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;想去深圳大概是因为某个人吧&lt;/li&gt;
+&lt;li&gt;不知道是不是喜欢她，也许也不知道喜欢是什么&lt;/li&gt;
+&lt;li&gt;理想很难，我喜欢白日做梦&lt;/li&gt;
+&lt;li&gt;也许知道，也许不知道&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="no" scheme="http://1818064040.github.io/tags/no/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务</title>
+    <link href="http://1818064040.github.io/2021/11/06/wei-fu-wu/"/>
+    <id>http://1818064040.github.io/2021/11/06/wei-fu-wu/</id>
+    <published>2021-11-06T07:32:01.000Z</published>
+    <updated>2021-11-12T14:09:00.512Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;微服务&quot;&gt;&lt;a href=&quot;#微服务&quot; class=&quot;headerlink&quot; title=&quot;微服务&quot;&gt;&lt;/a&gt;微服务&lt;/h1&gt;&lt;h3 id=&quot;初识微服务&quot;&gt;&lt;a href=&quot;#初识微服务&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://1818064040.github.io/tags/java/"/>
+    
+    <category term="微服务" scheme="http://1818064040.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="springCloud" scheme="http://1818064040.github.io/tags/springCloud/"/>
+    
+  </entry>
   
   <entry>
     <title>IO流</title>
