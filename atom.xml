@@ -6,7 +6,7 @@
   <link href="http://1818064040.github.io/atom.xml" rel="self"/>
   
   <link href="http://1818064040.github.io/"/>
-  <updated>2021-11-12T14:07:37.093Z</updated>
+  <updated>2021-11-17T09:01:16.296Z</updated>
   <id>http://1818064040.github.io/</id>
   
   <author>
@@ -17,11 +17,121 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Zookeeper</title>
+    <link href="http://1818064040.github.io/2021/11/17/zookeeper/"/>
+    <id>http://1818064040.github.io/2021/11/17/zookeeper/</id>
+    <published>2021-11-17T06:04:13.000Z</published>
+    <updated>2021-11-17T09:01:16.296Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;初识Zookeeper&quot;&gt;&lt;a href=&quot;#初识Zookeeper&quot; class=&quot;headerlink&quot; title=&quot;初识Zookeeper&quot;&gt;&lt;/a&gt;初识Zookeeper&lt;/h3&gt;&lt;h5 id=&quot;Zookeeper概念&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="分布式" scheme="http://1818064040.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    <category term="Java" scheme="http://1818064040.github.io/tags/Java/"/>
+    
+    <category term="Zookeeper" scheme="http://1818064040.github.io/tags/Zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构与算法--数据结构</title>
+    <link href="http://1818064040.github.io/2021/11/16/shu-ju-jie-gou-yu-suan-fa-shu-ju-jie-gou/"/>
+    <id>http://1818064040.github.io/2021/11/16/shu-ju-jie-gou-yu-suan-fa-shu-ju-jie-gou/</id>
+    <published>2021-11-16T10:56:26.000Z</published>
+    <updated>2021-11-17T12:31:49.882Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;数据结构&quot;&gt;&lt;a href=&quot;#数据结构&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://1818064040.github.io/tags/Java/"/>
+    
+    <category term="数据结构" scheme="http://1818064040.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://1818064040.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dubbo</title>
+    <link href="http://1818064040.github.io/2021/11/15/dubbo/"/>
+    <id>http://1818064040.github.io/2021/11/15/dubbo/</id>
+    <published>2021-11-15T06:33:51.000Z</published>
+    <updated>2021-11-16T06:56:05.579Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;大型互联网架构目标：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/11/15/dubbo/image-20211115145230324.png&quot; alt=&quot;架构目标（1）&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="分布式" scheme="http://1818064040.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    <category term="Dubbo" scheme="http://1818064040.github.io/tags/Dubbo/"/>
+    
+    <category term="Java" scheme="http://1818064040.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构与算法--算法篇</title>
+    <link href="http://1818064040.github.io/2021/11/15/shu-ju-jie-gou-yu-suan-fa-suan-fa-pian/"/>
+    <id>http://1818064040.github.io/2021/11/15/shu-ju-jie-gou-yu-suan-fa-suan-fa-pian/</id>
+    <published>2021-11-15T01:27:17.000Z</published>
+    <updated>2021-11-17T15:22:34.967Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;算法&quot;&gt;&lt;a href=&quot;#算法&quot; class=&quot;headerlink&quot; title=&quot;算法&quot;&gt;&lt;/a&gt;算法&lt;/h2&gt;&lt;h5 id=&quot;算法简介&quot;&gt;&lt;a href=&quot;#算法简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://1818064040.github.io/tags/Java/"/>
+    
+    <category term="数据结构" scheme="http://1818064040.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://1818064040.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>有点想说的话</title>
     <link href="http://1818064040.github.io/2021/11/12/you-dian-xiang-shuo-de-hua/"/>
     <id>http://1818064040.github.io/2021/11/12/you-dian-xiang-shuo-de-hua/</id>
     <published>2021-11-12T13:59:29.000Z</published>
-    <updated>2021-11-12T14:07:37.093Z</updated>
+    <updated>2021-11-15T07:11:52.961Z</updated>
     
     
       
@@ -30,11 +140,11 @@
         
     <summary type="html">&lt;ul&gt;
 &lt;li&gt;&lt;/li&gt;
-&lt;li&gt;想去深圳大概是因为某个人吧&lt;/li&gt;
+&lt;li&gt;想去某个地方大概是因为某个人吧&lt;/li&gt;
 &lt;li&gt;不知道是不是喜欢她，也许也不知道喜欢是什么&lt;/li&gt;
 &lt;li&gt;理想很难，我喜欢白日做梦&lt;/li&gt;
 &lt;li&gt;也许知道，也许不知道&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;怪话大全&lt;/li&gt;
 &lt;/ul&gt;
 </summary>
         
@@ -131,7 +241,7 @@
     <link href="http://1818064040.github.io/2021/10/30/xiao-ben-ben/"/>
     <id>http://1818064040.github.io/2021/10/30/xiao-ben-ben/</id>
     <published>2021-10-30T03:28:22.000Z</published>
-    <updated>2021-10-30T03:39:07.957Z</updated>
+    <updated>2021-11-17T08:50:49.600Z</updated>
     
     
       
@@ -245,13 +355,13 @@
     
     
     
+    <category term="Java" scheme="http://1818064040.github.io/tags/Java/"/>
+    
     <category term="Redis" scheme="http://1818064040.github.io/tags/Redis/"/>
     
     <category term="Jedis" scheme="http://1818064040.github.io/tags/Jedis/"/>
     
     <category term="nosql" scheme="http://1818064040.github.io/tags/nosql/"/>
-    
-    <category term="Java" scheme="http://1818064040.github.io/tags/Java/"/>
     
   </entry>
   
